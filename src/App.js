@@ -5,10 +5,37 @@ import $ from 'jquery';
 import './App.css';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      garageName: "",
+      capacity: 0,
+      carsInLot: 0
+    };
+  }
   componentDidMount() {
+    const $this = this;
     var socket = io('https://park-a-lot.herokuapp.com/');
     socket.on('updated', function (data, other) {
-      $.get('http://park-a-lot.herokuapp.com/api/v1/garages').then(response => console.log(response));
+      if (data === '5e2cf384da502e00178a746e'){
+        $.get('http://park-a-lot.herokuapp.com/api/v1/garages/5e2cf384da502e00178a746e').then(response => {
+          $this.setState({
+            garageName: response.garageName,
+            capacity: response.capacity,
+            carsInLot: response.carsInLot
+          });
+        });
+      }
+    });
+    $.get('http://park-a-lot.herokuapp.com/api/v1/garages/5e2cf384da502e00178a746e').then(response => {
+        if(response instanceof Error){
+          return;
+        }
+        this.setState({ 
+          garageName: response.garageName,
+          capacity: response.capacity,
+          carsInLot: response.carsInLot
+         });
     });
   }
   render(){
@@ -19,16 +46,16 @@ class App extends React.Component {
             <div class="parking-container">
               <div class="parking-app">
                 <h1 class="garage">
-                  JAAC Garage
+                  {this.state.garageName}
               </h1>
                 <h1 class="pill">
                   <span>
-                    245/500
+                    {this.state.carsInLot.toString()}/{this.state.capacity.toString()}
                 </span>
                 </h1>
                 <div class="available-container">
                   <h1 class="available">
-                    255 Available
+                    {(this.state.capacity - this.state.carsInLot).toString()} Available
               </h1>
                 </div>
               </div>
