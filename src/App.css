@@ -1,10 +1,5 @@
-.App {
+.app {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -13,19 +8,107 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.app-background {
+  background-image: url(map.png);
+  background-size: cover;
+  background-position: center;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+}
+
+.app {
+  background-color: rgba(18, 18, 28, .85);
   font-size: calc(10px + 2vmin);
+  min-height: 100vh;
+}
+
+.parking-container {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  border-radius: 12px;
+  background: rgb(103,33,255);
+  background: linear-gradient(0deg, rgba(103,33,255,1) 0%, rgba(160,69,255,1) 100%);
+  max-width: 750px;
+  height: 450px;
+}
+
+.parking-app {
+  border-radius: 8px;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  width: 100%;
+  max-width: 325px;
+  max-height: 225px;
+  background: #3A0BA0;
+  -webkit-box-shadow: 0px 16px 24px 0px rgba(0,0,0,0.35);
+  -moz-box-shadow: 0px 16px 24px 0px rgba(0,0,0,0.35);
+  box-shadow: 0px 16px 24px 0px rgba(0,0,0,0.35);
+}
+
+.garage {
+  padding-top: 15px;
+  font-size: 24px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.pill {
+  font-size: 16px;
+  color: white;
+}
+
+h1 span {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 40px;
+  border: 1px solid white;
+}
+
+.available-container {  
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  background-color: #6721FF;
+}
+
+.available {
+  font-size: 32px;
+  color: white;
+  font-weight: bolder;
+}
+
+.gh-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-bottom: .5em;
+}
+
+.gh-logo {
+  width: 16px;
+}
+
+.p-div {
+  margin: none;
+  padding: none;
+  display: inline-block;
+}
+
+a {
+  text-decoration: underline;
+  color: white;
+}
+
+.gh-link {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
